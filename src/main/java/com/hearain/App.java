@@ -1,13 +1,26 @@
 package com.hearain;
 
+import com.hearain.rsa.DownloadEncryptUtil;
+
 /**
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+    public static void main( String[] args ) {
+        try{
+            long start = System.currentTimeMillis();
+            String encryptKey = "109630268433943959995093860562726947988438046727422646615028483490322065627602791556529148858714361792528194112547346602678506016054762585340720346328473313608384802430018703139069767511987012446053339286160820047366426753984609503201125644296771817566176344432815607951603312141633462535269799151957992702787-93250214594049255381334318889622865184788423559518675489490864888048027044428606974971655753681616462829915632451162493954763230922574123316881390757598664701562068344580487533640353525195015329553131049503825333190742453279244185874933517476897818887161952272321659617349323658798375814318409929661617155673-2547555607520265193855544667688110366214586821895911037181581669678926222437095428096357210234194925702948257957893319068479935713856581978231659064275025";
+            String uuids = args[0];//uuid之间以#分隔
+            String[] uuidList = uuids.split("#");
+            for (int i = 0; i < uuidList.length; i++) {
+                String encodeUrl = DownloadEncryptUtil.getInstance(encryptKey).getEncodeUrl(uuidList[i], encryptKey);
+                System.out.println("encodeUrl:" + encodeUrl);
+            }
+            long end = System.currentTimeMillis();
+            System.out.println("加密耗时:" + (end - start));
+        }catch (Exception e){
+             e.printStackTrace();
+        }
     }
 }
