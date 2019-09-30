@@ -5,7 +5,10 @@
   <groupId>com.hearain</groupId>
   <artifactId>test-example</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <modules>
+        <module>design-patterns</module>
+    </modules>
+    <packaging>pom</packaging>
 
   <name>test-example</name>
   <url>http://maven.apache.org</url>
